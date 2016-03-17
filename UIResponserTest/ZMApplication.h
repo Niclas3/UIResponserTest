@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZMApplication : UIApplication <UIApplicationDelegate>
+@interface ZMApplication : UIApplication 
 
 
 @end

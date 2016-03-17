@@ -33,10 +33,17 @@
 {
     UIEvent *event = [notification.userInfo objectForKey:@"data"];
     UITouch *touch = [event.allTouches anyObject];
+    BOOL isNotInside = ![self pointInside: [touch locationInView:self] withEvent:event];
     
-    if (touch.view != self) {
+    if (touch.view != self && isNotInside) {
         [UIView animateWithDuration:0.5 animations:^{
             self.alpha = 0.0;
+        }];
+        [UIView commitAnimations];
+        
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.alpha = 1.0;
         }];
         
         [UIView commitAnimations];

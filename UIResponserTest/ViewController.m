@@ -23,9 +23,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(lala:)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orttt:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
+- (void)orttt:(NSNotification *) notification
+{
+  
+    id obj = [notification userInfo];
 
+    NSLog(@"转转转屏幕%@",obj);
+    [self.view snapshotViewAfterScreenUpdates:YES];
+}
+- (void)lala:(NSNotification *) notification
+{
+    id obj = [notification userInfo];
+    NSLog(@"胡汉三又回来啦！%@", obj);
+}
+- (IBAction)sss:(id)sender {
+    NSArray *array = @[@"http://www.baidu.com",
+                       @"http://www.clovergraden.tk",
+                       @1];
+    
+    UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:array applicationActivities:nil];
+    avc.excludedActivityTypes = @[UIActivityTypePostToFacebook];
+    [self.navigationController presentViewController:avc animated:YES completion:nil];
+}
 
 
 //-(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
@@ -54,7 +81,6 @@
 
 - (IBAction)touchUP:(id)sender {
     STLogResponderChain(sender);
-    
 }
 
 void STLogResponderChain(UIResponder *responder) {

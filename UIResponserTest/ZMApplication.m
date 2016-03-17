@@ -20,12 +20,11 @@
          postNotification:[NSNotification notificationWithName: @"nScreenTouch"
                                                         object:nil
                                                       userInfo:dic]];
-         
          }
+    if (event.type == UIEventTypeMotion) {
+        NSLog(@"摇一摇啦啦啦");
+    }
     [super sendEvent:event];
 }
-
-
-
 
 @end

@@ -11,6 +11,7 @@
 #import "ZMApplication.h"
 
 int main(int argc, char * argv[]) {
+    printf("one is all, all is one.");
     @autoreleasepool {
         return UIApplicationMain(argc, argv, NSStringFromClass([ZMApplication class]) , NSStringFromClass([AppDelegate class]));
     }
